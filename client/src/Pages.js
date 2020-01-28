@@ -12,7 +12,7 @@ const Pages = (props) => {
 
         Axios.get(`/getPage?folder=${folder}&page=${props.title}`)
             .then((res) => setContent(res.data))
-    }, [props])
+    }, [])
 
     return (
         <div className="picture_div">

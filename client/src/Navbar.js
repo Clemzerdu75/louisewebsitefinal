@@ -6,6 +6,7 @@ class Navbar extends Component {
   state = { activeIndex: -1 }
     
   handleClick = (index) => {
+    console.log("handleClick index: " + index)
     const { activeIndex } = this.state
     const newIndex = activeIndex === index ? -1 : index
 
@@ -21,7 +22,7 @@ class Navbar extends Component {
         return (
             <div key={index}>
                 <Accordion.Title
-                    active={activeIndex === index}
+                    active={false}
                     index={index}
                     onClick={() => this.handleClick(index)}>
                     <p className="navbar-title">{key}</p>
@@ -48,9 +49,12 @@ class Navbar extends Component {
 
     let navBarList = []
     for(let key in keys) {
+        console.log("key: " +  key)
         let tmp = section(folders, keys[key], key)
         navBarList = navBarList.concat(tmp)
     }
+
+    console.log("activeIndex: " + activeIndex)
 
     return (
         <div className="navbar">

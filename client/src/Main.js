@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
 
 const Main = () => {
+    const [raw, setRaw] = useState([])
     const [gallery, setGallery] = useState([])
 
-    function importAll(r) {
-        return r.keys().map(r);
-    }
+    // function importAll(r) {
+    //     return r.keys().map(r);
+    // }
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -27,8 +29,12 @@ const Main = () => {
       }
 
     useEffect(() => {
-        let images = importAll(require.context('./../../media/mainImg/', false, /\.(png|jpe?g|svg)$/));
-        let galleries = images.map((el, index) => 
+        Axios.get(`/getPage?folder=mainImg&page=0}`)
+            .then((res) => setRaw(res.data))
+    }, [])  
+
+    useEffect(() => {
+        let galleries = raw.map((el, index) => 
         {
             let classes = ""
             if (index % 1 === 0) classes = "main1"
@@ -37,7 +43,7 @@ const Main = () => {
             return  <img key={el} alt="" className={classes} src={el}></img>
         })
         setGallery(shuffle(galleries))
-    }, [])  
+    }, [raw])
     
     
       
