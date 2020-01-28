@@ -4,31 +4,60 @@ import  {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import axios from 'axios';
 
 import Main from './Main';
+import MenuIcon from './Utils/MenuIcon';
 import Contact from './Contact';
 import Page from './Page';
+import Navbar from './Navbar'
 
-function App() {
+const App = ()  => {
   const [folders, setFolders] = useState({});
-
+  const [showNav, setShowNav] = useState(window.innerWidth <= 640 ? false : true,)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640 ? true : false,)
+  
   useEffect(() => {
     axios.get('/folderInfos')
         .then(res => setFolders(res.data))
   }, [])
+
+  const handleNav = () => { setShowNav(!showNav) }
 
   let allPages = []
   Object.keys(folders).forEach(function (key) {
       allPages = allPages.concat(folders[key]);
   });
 
-  console.log(allPages)
-
   return (
     
     <div  style={{overflow: "hidden"}}>
       <Router>
-        <Link className="Main_title" to="/"><h1>LOUISE GIRARDINI</h1></Link>
-        <Link  to="/Contact"><h2>Contact</h2></Link>
-        <Switch >  
+
+        <div className="Row" style={{position: "fixed", zIndex: "1"}}>
+          <MenuIcon showNav={handleNav} isOpened={showNav} isMobile={isMobile}/>
+          <Link className="Main_title" to="/"><h1>LOUISE GIRARDIN</h1></Link>
+        </div>
+
+        {/* <Link  to="/Contact"><h2>Contact</h2></Link> */}
+        <div className="Row" >
+          
+          <div className="Col1" style={{marginLeft: showNav ? 0 : "-250px", position: "fixed"}}>
+            <Navbar showNav={handleNav} isMobile={isMobile} folders={folders}/>
+          </div>
+          
+          <div className="Col2" style={{marginLeft: showNav ? "250px" : 0}}>
+            <Switch >
+                <Route path="/" exact component={Main}/>
+                {
+                    allPages.map((el) =>  {
+                        let paths= `/${el}`;
+                        return (
+                            <Route key={el} path={paths} component={() => <h1>Hola</h1>/*<Pages folders={folders}  title={el}/>*/} />
+                    )})
+                }
+                <Route path="/Contact" component={Contact} />
+            </Switch>
+          </div>
+        </div>
+        {/* <Switch >  
           <Route path="/" exact component={Main}/>
           {
             allPages.map((el) =>  {
@@ -38,7 +67,7 @@ function App() {
             )})
           }
           <Route path="/Contact" component={Contact} />
-        </Switch>
+        </Switch> */}
       </Router>
       
     </div>
