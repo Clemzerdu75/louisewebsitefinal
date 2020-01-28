@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Main = () => {
+    const [gallery, setGallery] = useState([])
 
     function importAll(r) {
         return r.keys().map(r);
@@ -24,17 +25,20 @@ const Main = () => {
       
         return array;
       }
-      
-    let images = importAll(require.context('./../public/mainImg/', false, /\.(png|jpe?g|svg)$/));
-    let gallery = images.map((el, index) => 
-    {
-        let classes = ""
-        if (index % 1 === 0) classes = "main1"
-        if (index % 2 === 0) classes = "main2"
-        if (index % 3 === 0) classes = "main3"
-        return  <img key={el} alt="" className={classes} src={el}></img>
-    })
-    gallery = shuffle(gallery)
+
+    useEffect(() => {
+        let images = importAll(require.context('./../public/mainImg/', false, /\.(png|jpe?g|svg)$/));
+        let galleries = images.map((el, index) => 
+        {
+            let classes = ""
+            if (index % 1 === 0) classes = "main1"
+            if (index % 2 === 0) classes = "main2"
+            if (index % 3 === 0) classes = "main3"
+            return  <img key={el} alt="" className={classes} src={el}></img>
+        })
+        setGallery(shuffle(galleries))
+    }, [])  
+    
     
       
     return(

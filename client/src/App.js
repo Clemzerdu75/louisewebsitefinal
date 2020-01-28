@@ -47,9 +47,8 @@ const App = ()  => {
           <Link className="Main_title" to="/"><h1>LOUISE GIRARDIN</h1></Link>
         </div>
 
-        {/* <Link  to="/Contact"><h2>Contact</h2></Link> */}
         <div className="Row" >
-          
+
           <div className="Col1" style={{marginLeft: showNav ? 0 : "-250px", position: "fixed"}}>
             <Navbar showNav={handleNav} isMobile={isMobile} folders={folders}/>
           </div>
@@ -68,17 +67,6 @@ const App = ()  => {
             </Switch>
           </div>
         </div>
-        {/* <Switch >  
-          <Route path="/" exact component={Main}/>
-          {
-            allPages.map((el) =>  {
-                let paths= `/${el}`;
-                return (
-                    <Route key={el} path={paths} component={() => <Page folders={folders}  title={el}/>} />
-            )})
-          }
-          <Route path="/Contact" component={Contact} />
-        </Switch> */}
       </Router>
       
     </div>
