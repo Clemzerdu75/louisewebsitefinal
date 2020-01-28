@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     let response = {};
 
     //Gets the main category
-    fs.readdirSync(path.join('public/img')).forEach(file => {
+    fs.readdirSync(path.join('media/img')).forEach(file => {
         mainFolders.push(file);
     })
 
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
     // Gets the sub file 
     for(i of mainFolders) {
         let array = []
-        let dirpath = path.join(`public/img/${i}`)
+        let dirpath = path.join(`media/img/${i}`)
         fs.readdirSync(dirpath).forEach(file => {
             array.push(file)
         })

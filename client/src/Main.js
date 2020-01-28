@@ -27,7 +27,7 @@ const Main = () => {
       }
 
     useEffect(() => {
-        let images = importAll(require.context('./../public/mainImg/', false, /\.(png|jpe?g|svg)$/));
+        let images = importAll(require.context('./../../media/mainImg/', false, /\.(png|jpe?g|svg)$/));
         let galleries = images.map((el, index) => 
         {
             let classes = ""
