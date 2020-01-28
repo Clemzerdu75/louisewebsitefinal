@@ -15,11 +15,22 @@ const App = ()  => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640 ? true : false,)
   
   useEffect(() => {
+    window.addEventListener('resize', handleMobile)
+    return () =>
+    window.removeEventListener('resize', handleMobile)
+  })
+
+  useEffect(() => {
     axios.get('/folderInfos')
         .then(res => setFolders(res.data))
   }, [])
 
   const handleNav = () => { setShowNav(!showNav) }
+
+  const handleMobile = () => { 
+    setIsMobile(window.innerWidth <= 640 ? true : false);
+    setShowNav(window.innerWidth <= 640 ? false : true);
+  }
 
   let allPages = []
   Object.keys(folders).forEach(function (key) {
