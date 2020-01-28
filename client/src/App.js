@@ -44,7 +44,7 @@ const App = ()  => {
 
         <div className="Row" style={{position: "fixed", zIndex: "1"}}>
           <MenuIcon showNav={handleNav} isOpened={showNav} isMobile={isMobile}/>
-          <Link className="Main_title" to="/"><h1>LOUISE GIRARDIN</h1></Link>
+          <Link className="Main_title" to="/" onClick={() => setShowNav(window.innerWidth <= 640 ? false : true)}><h1>LOUISE GIRARDIN</h1></Link>
         </div>
 
         <div className="Row" >

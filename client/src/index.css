@@ -138,6 +138,10 @@ a:hover {
   .main3 {
     width: 200px !important;
   }
+
+  .contact_div {
+    margin-top: 50% !important; 
+  }
 }
 
 .picture_div {
@@ -146,6 +150,14 @@ a:hover {
   width: 70%;
   text-align: center;
   margin-top: 100px;
+}
+
+.contact_div {
+  margin: 0 auto;
+  height: auto;
+  width: 70%;
+  text-align: center;
+  margin-top: 20%;
 }
 
 .img {
@@ -191,9 +203,4 @@ a:hover {
   width: 150%;
   text-align: center;
   margin-top: 100px;
-}
-
-@media screen and(max-width: 640px) {
-
-  
 }

@@ -56,7 +56,7 @@ class Navbar extends Component {
         <div className="navbar">
             <Accordion>
                 {navBarList}
-                <Link  to="/Contact"><p className="navbar-title" style={{marginLeft: "-7%", marginTop: "20px"}}>CONTACT</p></Link>
+                <Link  onClick={ () => { if (this.props.isMobile) this.props.showNav() }} to="/Contact"><p className="navbar-title" style={{marginLeft: "-7%", marginTop: "20px"}}>CONTACT</p></Link>
             </Accordion>
         </div>
     )
