@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import  {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import  {HashRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import axios from 'axios';
 
 import Main from './Main';
 import MenuIcon from './Utils/MenuIcon';
 import Contact from './Contact';
-import Page from './Page';
+import Pages from './Pages';
 import Navbar from './Navbar'
 
 const App = ()  => {
@@ -60,7 +60,7 @@ const App = ()  => {
                     allPages.map((el) =>  {
                         let paths= `/${el}`;
                         return (
-                            <Route key={el} path={paths} component={() => <h1>Hola</h1>/*<Pages folders={folders}  title={el}/>*/} />
+                        <Route key={el} path={paths} component={() => <Pages folders={folders}  title={el}/> }/>
                     )})
                 }
                 <Route path="/Contact" component={Contact} />
