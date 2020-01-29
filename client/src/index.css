@@ -126,6 +126,14 @@ a:hover {
     
   }
 
+  .main0 {
+    display: block !important;
+    margin-left: 0%;
+    transform: scale(0.8);
+    width: 375px;
+    margin-top: -70px !important;
+  }
+
   .picture_div2 {
     width: 500px !important;
     margin-left: 0 !important;
@@ -133,18 +141,21 @@ a:hover {
 
   .main1 {
     width: 350px !important;
-    margin-left: 0 !important;
+    margin-left: 20px !important;
     margin-top: 20px !important;
+    float: left;
   }
   .main2 {
     width: 250px !important;
-    margin-left: 2em !important;
+    margin-left: -.5em !important;
+    margin-top: 2em !important;
+    float: right !important;
   }
 
   .main3 {
     width: 200px !important;
     margin-left: 1em !important;
-    margin-top: 2em !important; 
+    margin-top: 3em !important; 
   }
 
   .contact_div {

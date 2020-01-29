@@ -48,7 +48,7 @@ const Main = () => {
     
       
     return(
-        <div className="picture_div2" style={{marginTop: "1em"}}>
+        <div className="picture_div2" style={{marginTop: "0em"}}>
             <div className="main0">
                 {gallery}
             </div>
